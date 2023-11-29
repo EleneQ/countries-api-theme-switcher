@@ -23,7 +23,7 @@ const FilterRegions = () => {
   };
 
   const renderedRegions = options.map((region) => {
-    return (
+    return ( 
       <li
         className="region-list-item"
         onClick={() => handleOptionClick(region)}
