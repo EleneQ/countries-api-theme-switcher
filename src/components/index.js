@@ -1,7 +1,8 @@
 import Header from "./Header";
 import Search from "./Search";
+import AllCountries from "./AllCountries";
 
-export { Header, Search };
+export { Header, Search, AllCountries };
 
 /* 
   this file just imports and exports all the

@@ -5,7 +5,7 @@ import FilterRegions from "./FilterRegions";
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSearchTermChange = (e) => {
+  const handleSearchCountries = (e) => {
     setSearchTerm(e.target.value);
   };
 
@@ -18,7 +18,7 @@ const Search = () => {
           name="search"
           placeholder="Search for a country..."
           value={searchTerm}
-          onChange={handleSearchTermChange}
+          onChange={handleSearchCountries}
         />
       </section>
       <FilterRegions />
