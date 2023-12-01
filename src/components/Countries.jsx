@@ -6,8 +6,8 @@ import AllCountries from "./AllCountries";
 const Countries = () => {
   const url = "https://restcountries.com/v3.1/all";
   const [search, setSearch] = useState("");
-  const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [countries, setCountries] = useState([]);
   const [currentCountries, setCurrentCountries] = useState([]);
 
   /* 
@@ -18,7 +18,14 @@ const Countries = () => {
     teh abort has to do with the asynchronous nature of getCountriesByName and the fast updates in the search term. When you delete letters quickly, multiple asynchronous requests may be initiated in quick succession, and the responses may arrive out of order, leading to unexpected behavior
   */
   useEffect(() => {
-    getAllCountries();
+    let mounted = true;
+    if (mounted) {
+      getAllCountries();
+    }
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const handleOnSearchChange = (search) => {
@@ -41,24 +48,35 @@ const Countries = () => {
   };
 
   const searchCountries = (search) => {
-    const currentCountriesArray = countries.filter((country) => {
-      const countryNameLower = country.name.common.toLowerCase();
-      return countryNameLower.includes(search.toLowerCase());
-    });
-    setCurrentCountries(currentCountriesArray);
+    try {
+      const currentCountriesArray = countries.filter((country) => {
+        const countryNameLower = country.name.common.toLowerCase();
+        return countryNameLower.includes(search.toLowerCase());
+      });
+      setCurrentCountries(currentCountriesArray);
+    } catch (error) {
+      console.error("Error searching countries:", error);
+    }
   };
 
   return (
     <main>
-      <Search search={search} onSearchChange={handleOnSearchChange} />
-
+      <Search
+        search={search}
+        onSearchChange={handleOnSearchChange}
+        setCountries={setCountries}
+      />
       <section className="countries-section">
         {loading ? (
-          <p className="loading">Loading...</p>
+          <p className="loading">Searching...</p>
         ) : search.length > 0 ? (
-          currentCountries.map((country) => {
-            return <Country key={country.name.common} country={country} />;
-          })
+          currentCountries.length > 0 ? (
+            currentCountries.map((country) => (
+              <Country key={country.name.common} country={country} />
+            ))
+          ) : (
+            <p>No Countries found...</p>
+          )
         ) : (
           <AllCountries countries={countries} />
         )}

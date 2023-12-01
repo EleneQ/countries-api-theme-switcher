@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const options = [
   { label: "All", value: "all" },
@@ -9,9 +9,25 @@ const options = [
   { label: "Oceania", value: "oceania" },
 ];
 
-const FilterRegions = () => {
+const FilterRegions = ({ setCountries }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeRegion, setActiveRegion] = useState("");
+
+  const getCountriesByRegion = async (activeRegion) => {
+    if (activeRegion === "all") {
+      const url = "https://restcountries.com/v3.1/all";
+      const res = await fetch(url);
+      const data = await res.json();
+
+      setCountries(data);
+    } else {
+      const url = `https://restcountries.com/v3.1/region/${activeRegion}`;
+      const res = await fetch(url);
+      const data = await res.json();
+
+      setCountries(data);
+    }
+  };
 
   const handleClick = () => {
     setIsOpen((prev) => !prev);
@@ -19,11 +35,13 @@ const FilterRegions = () => {
 
   const handleOptionClick = (region) => {
     setIsOpen(false);
-    setActiveRegion(region.label);
+    setActiveRegion(region.value);
+
+    getCountriesByRegion(region.value);
   };
 
   const renderedRegions = options.map((region) => {
-    return ( 
+    return (
       <li
         className="region-list-item"
         onClick={() => handleOptionClick(region)}

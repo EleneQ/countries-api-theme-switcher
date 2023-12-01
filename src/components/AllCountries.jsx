@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Country from "./Country";
 
 const AllCountries = ({ countries }) => {
@@ -8,6 +9,10 @@ const AllCountries = ({ countries }) => {
       ))}
     </>
   );
+};
+
+AllCountries.propTypes = {
+  countries: PropTypes.array.isRequired,
 };
 
 export default AllCountries;
