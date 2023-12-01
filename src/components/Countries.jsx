@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Search from "./Search";
 import Country from "./Country";
 import AllCountries from "./AllCountries";
@@ -9,6 +9,34 @@ const Countries = () => {
   const [loading, setLoading] = useState(false);
   const [countries, setCountries] = useState([]);
   const [currentCountries, setCurrentCountries] = useState([]);
+
+  /* 
+    The useCallback hook is used to memoize the
+    getAllCountries function so that it's created
+    only once during the initial rendering of the
+    component. This memoization is particularly useful
+    in scenarios where the function's used as a dependency
+    for other hooks, like the useEffect hook in this example.
+    By memoizing the function, we ensure that the reference
+    to it remains constant between renders, which can be
+    beneficial for performance optimization. Without useCallback,
+    a new function reference would be created on every render,
+    potentially leading to unnecessary re-execution of certain
+    hooks that depend on it.
+  */
+  const getAllCountries = useCallback(async () => {
+    try {
+      setLoading(true);
+      const res = await fetch(url);
+      const data = await res.json();
+
+      setCountries(data);
+    } catch (error) {
+      console.error("Error fetching all countries:", error);
+    } finally {
+      setLoading(false);
+    }
+  });
 
   /* 
     the .trim() is to only fetch data when search isn't empty.
@@ -31,20 +59,6 @@ const Countries = () => {
   const handleOnSearchChange = (search) => {
     setSearch(search);
     searchCountries(search);
-  };
-
-  const getAllCountries = async () => {
-    try {
-      setLoading(true);
-      const res = await fetch(url);
-      const data = await res.json();
-
-      setCountries(data);
-    } catch (error) {
-      console.error("Error fetching all countries:", error);
-    } finally {
-      setLoading(false);
-    }
   };
 
   const searchCountries = (search) => {
