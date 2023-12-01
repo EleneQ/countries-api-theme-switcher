@@ -168,3 +168,24 @@ header {
 .region-list > *:where(:not(:last-child)) {
   margin-bottom: 0.6rem;
 }
+
+.countries-section {
+  padding: 2.8rem 5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 4.5rem;
+  row-gap: 4rem;
+}
+
+.card {
+  width: 15rem;
+  box-shadow: rgb(0 0 0 / 3%) 0px 0px 3px 3px;
+  padding-bottom: 2rem;
+  border-radius: 10px;
+  background-color: $clr-gray-1;
+}
+
+.card img {
+  border-radius: 10px 10px 0px 0px;
+  object-fit: contain;
+}

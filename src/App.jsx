@@ -1,12 +1,13 @@
-import { Header, Search, AllCountries } from "./components";
+
+import { Header, Countries } from "./components";
 
 const App = () => {
   return (
-    <div>
+    <>
       <Header />
-      <Search />
-      <AllCountries />
-    </div>
+      <Countries />
+    </>
   );
 };
+
 export default App;
