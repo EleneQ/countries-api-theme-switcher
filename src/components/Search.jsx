@@ -1,7 +1,7 @@
 import { FaSearch } from "react-icons/fa";
 import FilterRegions from "./FilterRegions";
 
-const Search = ({ search, onSearchChange, setCountries }) => {
+const Search = ({ search, onSearchChange, setCountries, searchCountries }) => {
   return (
     <article className="search-section">
       <section className="input-block">
@@ -14,7 +14,11 @@ const Search = ({ search, onSearchChange, setCountries }) => {
           onChange={(e) => onSearchChange(e.target.value)}
         />
       </section>
-      <FilterRegions setCountries={setCountries} />
+      <FilterRegions
+        setCountries={setCountries}
+        searchCountries={searchCountries}
+        search={search}
+      />
     </article>
   );
 };

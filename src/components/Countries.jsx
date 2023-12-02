@@ -8,7 +8,7 @@ const Countries = () => {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [countries, setCountries] = useState([]);
-  const [currentCountries, setCurrentCountries] = useState([]);
+  const [searchedForCountries, setSearchedForCountries] = useState([]);
 
   /* 
     The useCallback hook is used to memoize the
@@ -58,16 +58,16 @@ const Countries = () => {
 
   const handleOnSearchChange = (search) => {
     setSearch(search);
-    searchCountries(search);
+    searchCountries(search, countries);
   };
 
-  const searchCountries = (search) => {
+  const searchCountries = (search, countriesToSearch) => {
     try {
-      const currentCountriesArray = countries.filter((country) => {
+      const searchedForCountriesArray = countriesToSearch.filter((country) => {
         const countryNameLower = country.name.common.toLowerCase();
         return countryNameLower.includes(search.toLowerCase());
       });
-      setCurrentCountries(currentCountriesArray);
+      setSearchedForCountries(searchedForCountriesArray);
     } catch (error) {
       console.error("Error searching countries:", error);
     }
@@ -79,13 +79,14 @@ const Countries = () => {
         search={search}
         onSearchChange={handleOnSearchChange}
         setCountries={setCountries}
+        searchCountries={searchCountries}
       />
       <section className="countries-section">
         {loading ? (
           <p className="loading">Searching...</p>
         ) : search.length > 0 ? (
-          currentCountries.length > 0 ? (
-            currentCountries.map((country) => (
+          searchedForCountries.length > 0 ? (
+            searchedForCountries.map((country) => (
               <Country key={country.name.common} country={country} />
             ))
           ) : (

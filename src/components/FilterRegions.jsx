@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const options = [
   { label: "All", value: "all" },
@@ -9,23 +9,26 @@ const options = [
   { label: "Oceania", value: "oceania" },
 ];
 
-const FilterRegions = ({ setCountries }) => {
+const FilterRegions = ({ setCountries, searchCountries, search }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeRegion, setActiveRegion] = useState("");
 
-  const getCountriesByRegion = async (activeRegion) => {
-    if (activeRegion === "all") {
-      const url = "https://restcountries.com/v3.1/all";
-      const res = await fetch(url);
-      const data = await res.json();
-
-      setCountries(data);
+  const getCountriesByRegion = async (region) => {
+    let url;
+    if (region === "all") {
+      url = "https://restcountries.com/v3.1/all";
     } else {
-      const url = `https://restcountries.com/v3.1/region/${activeRegion}`;
+      url = `https://restcountries.com/v3.1/region/${region}`;
+    }
+
+    try {
       const res = await fetch(url);
       const data = await res.json();
 
       setCountries(data);
+      searchCountries(search, data);
+    } catch (error) {
+      console.log(error);
     }
   };
 
