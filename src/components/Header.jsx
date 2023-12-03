@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Toggle from "./Toggle";
 
 const Header = () => {
@@ -5,7 +6,9 @@ const Header = () => {
     <header>
       <div className="header-content">
         <nav>
-          <h1>Where in the world?</h1>
+          <Link to="/">
+            <h1>Where in the world?</h1>
+          </Link>
         </nav>
         <Toggle />
       </div>
