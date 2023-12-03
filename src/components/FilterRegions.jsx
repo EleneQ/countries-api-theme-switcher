@@ -49,6 +49,8 @@ const FilterRegions = ({ setCountries, searchCountries, search }) => {
         className="region-list-item"
         onClick={() => handleOptionClick(region)}
         key={region.value}
+        role="option"
+        aria-selected={region.value === activeRegion}
       >
         {region.label}
       </li>

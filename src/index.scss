@@ -74,6 +74,11 @@ header {
   margin-top: 0.5rem;
 }
 
+button.toggle {
+  background-color: transparent;
+  border: none;
+}
+
 .search-section {
   padding: 2.8rem 5rem;
   display: flex;

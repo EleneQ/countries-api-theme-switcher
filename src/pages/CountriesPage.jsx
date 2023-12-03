@@ -56,7 +56,7 @@ const Countries = () => {
 
   const handleOnSearchChange = (search) => {
     setSearch(search);
-    searchCountries(search, countries);
+    searchCountries(search.trim(), countries);
   };
 
   const searchCountries = (search, countriesToSearch) => {

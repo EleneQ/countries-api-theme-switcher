@@ -6,18 +6,20 @@ const CountryCard = ({ country }) => {
   return (
     <Link to={`/${country.name.common.toLowerCase().replace(/\s/g, "%20")}`}>
       <div key={name.common} className="card">
-        <img src={flags?.svg || flags?.png} alt={name.common} />
+        <img src={flags?.svg || flags?.png} alt={`Flag of ${name.official}`} />
         <h2>{name.official}</h2>
         <div>
-          <p>
-            <span>Population:</span> {population}
-          </p>
-          <p>
-            <span>Region:</span> {region}
-          </p>
-          <p>
-            <span>Capital:</span> {capital}
-          </p>
+          <ul>
+            <li>
+              <span>Population:</span> {population}
+            </li>
+            <li>
+              <span>Region:</span> {region}
+            </li>
+            <li>
+              <span>Capital:</span> {capital}
+            </li>
+          </ul>
         </div>
       </div>
     </Link>

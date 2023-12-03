@@ -9,7 +9,7 @@ const Toggle = () => {
   };
 
   return (
-    <section onClick={changeTheme} className="toggle">
+    <button onClick={changeTheme} className="toggle" aria-pressed={darkMode}>
       {darkMode ? (
         <div className="toggle-light">
           <FaRegSun />
@@ -21,7 +21,7 @@ const Toggle = () => {
           <p>Dark Mode</p>
         </div>
       )}
-    </section>
+    </button>
   );
 };
 

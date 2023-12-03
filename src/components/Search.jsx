@@ -12,6 +12,7 @@ const Search = ({ search, onSearchChange, setCountries, searchCountries }) => {
           placeholder="Search for a country..."
           value={search}
           onChange={(e) => onSearchChange(e.target.value)}
+          aria-label="Search for a country"
         />
       </section>
       <FilterRegions
