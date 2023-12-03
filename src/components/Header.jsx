@@ -6,7 +6,7 @@ const Header = () => {
     <header>
       <div className="header-content">
         <nav>
-          <Link to="/">
+          <Link to="/" aria-label="Get Back To Home">
             <h1>Where in the world?</h1>
           </Link>
         </nav>

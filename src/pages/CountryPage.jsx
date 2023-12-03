@@ -81,7 +81,7 @@ const CountryPage = () => {
                   alt={name}
                 />
 
-                <section>
+                <section className="country-detailed-info">
                   <h2>{name}</h2>
                   <ul>
                     <li>
