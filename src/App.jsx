@@ -1,11 +1,16 @@
-
-import { Header, Countries } from "./components";
+import { Routes, Route } from "react-router";
+import { Header } from "./components";
+import CountriesPage from "./pages/CountriesPage";
+import CountryPage from "./pages/CountryPage";
 
 const App = () => {
   return (
     <>
       <Header />
-      <Countries />
+      <Routes>
+        <Route path="/" element={<CountriesPage />} />
+        <Route path="/:name" element={<CountryPage />} />
+      </Routes>
     </>
   );
 };

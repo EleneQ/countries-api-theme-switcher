@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
-import Country from "./Country";
+import CountryCard from "./CountryCard";
 
 const AllCountries = ({ countries }) => {
   return (
     <>
       {countries.map((country) => (
-        <Country key={country.name.common} country={country} />
+        <CountryCard key={country.name.common} country={country} />
       ))}
     </>
   );

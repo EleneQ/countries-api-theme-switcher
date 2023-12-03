@@ -1,9 +1,9 @@
 import Header from "./Header";
 import Search from "./Search";
-import AllCountries from "./AllCountries";
-import Countries from "./Countries";
+import AllRelevantCountries from "./AllRelevantCountries";
+import SearchMessage from "./SearchMessage";
 
-export { Header, Search, AllCountries, Countries };
+export { Header, Search, AllRelevantCountries, SearchMessage };
 
 /* 
   this file just imports and exports all the

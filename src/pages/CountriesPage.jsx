@@ -1,7 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import Search from "./Search";
-import Country from "./Country";
-import AllCountries from "./AllCountries";
+import { Search, AllRelevantCountries, SearchMessage } from "../components";
 
 const Countries = () => {
   const url = "https://restcountries.com/v3.1/all";
@@ -83,17 +81,15 @@ const Countries = () => {
       />
       <section className="countries-section">
         {loading ? (
-          <p className="loading">Searching...</p>
+          <SearchMessage />
         ) : search.length > 0 ? (
           searchedForCountries.length > 0 ? (
-            searchedForCountries.map((country) => (
-              <Country key={country.name.common} country={country} />
-            ))
+            <AllRelevantCountries countries={searchedForCountries} />
           ) : (
             <p>No Countries found...</p>
           )
         ) : (
-          <AllCountries countries={countries} />
+          <AllRelevantCountries countries={countries} />
         )}
       </section>
     </main>
