@@ -66,7 +66,7 @@ const CountryPage = () => {
         <SearchMessage />
       ) : (
         <>
-          <Link to="/">
+          <Link to="/" className="back-link">
             <span>
               <FaLongArrowAltLeft />
             </span>{" "}
@@ -74,15 +74,12 @@ const CountryPage = () => {
           </Link>
 
           {country ? (
-            <section>
-              <section>
-                <img
-                  src={country.flags?.svg || country.flags?.png}
-                  alt={name}
-                />
+            <section className="country-page">
+              <img src={country.flags?.svg || country.flags?.png} alt={name} />
 
-                <section className="country-detailed-info">
-                  <h2>{name}</h2>
+              <section className="country-page-info">
+                <h2>{name}</h2>
+                <section className="country-page-info-details">
                   <ul>
                     <li>
                       <span>Native Name:</span>{" "}
@@ -110,7 +107,7 @@ const CountryPage = () => {
                         ? Object.values(country.currencies)[0]?.name
                         : "Unknown"}
                     </li>
-                    <li>
+                    <li className="country-languages-list">
                       <span>Languages:</span>{" "}
                       <ul>
                         {country.languages
@@ -122,21 +119,21 @@ const CountryPage = () => {
                     </li>
                   </ul>
                 </section>
-              </section>
 
-              <section className="border-countries">
-                <ul>
-                  <span>Border Countries:</span>{" "}
-                  {borderCountries.length ? (
-                    borderCountries.map((borderCountry, index) => (
-                      <li key={index}>
-                        <Link to={`/${borderCountry}`}>{borderCountry}</Link>
-                      </li>
-                    ))
-                  ) : (
-                    <p>No borders</p>
-                  )}
-                </ul>
+                <section className="border-countries">
+                  <ul className="border-countries-list">
+                    <span>Border Countries:</span>{" "}
+                    {borderCountries.length ? (
+                      borderCountries.map((borderCountry, index) => (
+                        <li key={index} className="border-country">
+                          <Link to={`/${borderCountry}`}>{borderCountry}</Link>
+                        </li>
+                      ))
+                    ) : (
+                      <p>No borders</p>
+                    )}
+                  </ul>
+                </section>
               </section>
             </section>
           ) : null}

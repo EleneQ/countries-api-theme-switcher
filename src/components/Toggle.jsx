@@ -4,12 +4,13 @@ import { useState } from "react";
 const Toggle = () => {
   const [darkMode, setDarkMode] = useState(false);
 
-  const changeTheme = () => {
+  const handleChangeTheme = () => {
+    document.body.classList.toggle("dark");
     setDarkMode((prev) => !prev);
   };
 
   return (
-    <button onClick={changeTheme} className="toggle" aria-pressed={darkMode}>
+    <button onClick={handleChangeTheme} className="toggle" aria-pressed={darkMode}>
       {darkMode ? (
         <div className="toggle-light">
           <FaRegSun />
