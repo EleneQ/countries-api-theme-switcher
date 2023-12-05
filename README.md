@@ -9,4 +9,4 @@
 - Enhanced knowledge of Accessibility Practices
 - Developed better Time Management Skills
 - Expanded Proficiency in Git Version Control
-- Leaned more about React Router
+- Learned more about React Router
