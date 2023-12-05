@@ -2,9 +2,10 @@
 
 - https://656f85a0eb8faf337bef8b66--superb-naiad-cbfa7b.netlify.app/
 
-#### What I Learned:
+#### Key Takeaways:
 
-- How to use Bootstrap with React
-- More about APIs
-- How to implement a dark/light toggle
-- More about accessibility
+- Learned more about APIs
+- Implemented Dark/Light Mode Toggle Functionality
+- Enhanced knowledge of Accessibility Practices
+- Developed better Time Management Skills
+- Expanded Proficiency in Git Version Control
