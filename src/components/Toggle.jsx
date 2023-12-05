@@ -5,12 +5,16 @@ const Toggle = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   const handleChangeTheme = () => {
-    document.body.classList.toggle("dark");
+    document.body.classList.toggle("dark"); //probably should be done using the context api in a bigger application
     setDarkMode((prev) => !prev);
   };
 
   return (
-    <button onClick={handleChangeTheme} className="toggle" aria-pressed={darkMode}>
+    <button
+      onClick={handleChangeTheme}
+      className="toggle bg-transparent border-0"
+      aria-pressed={darkMode}
+    >
       {darkMode ? (
         <div className="toggle-light">
           <FaRegSun />

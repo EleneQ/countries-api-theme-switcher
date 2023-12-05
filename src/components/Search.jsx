@@ -1,12 +1,17 @@
 import { FaSearch } from "react-icons/fa";
 import FilterRegions from "./FilterRegions";
+import Stack from "react-bootstrap/Stack";
 
 const Search = ({ search, onSearchChange, setCountries, searchCountries }) => {
   return (
-    <article className="search-section">
-      <section className="input-block">
-        <FaSearch className="search-icon" />
+    <Stack
+      direction="horizontal"
+      className="search-section justify-content-between"
+    >
+      <section className="input-block position-relative rounded-3">
+        <FaSearch className="search-icon position-absolute" />
         <input
+          className="border-0 w-100 rounded-3"
           type="text"
           name="search"
           placeholder="Search for a country..."
@@ -20,7 +25,7 @@ const Search = ({ search, onSearchChange, setCountries, searchCountries }) => {
         searchCountries={searchCountries}
         search={search}
       />
-    </article>
+    </Stack>
   );
 };
 

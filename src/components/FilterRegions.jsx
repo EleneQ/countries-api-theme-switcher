@@ -38,7 +38,7 @@ const FilterRegions = ({ setCountries, searchCountries, search }) => {
 
   const handleOptionClick = (region) => {
     setIsOpen(false);
-    setActiveRegion(region.value);
+    setActiveRegion(region.label);
 
     getCountriesByRegion(region.value);
   };
@@ -58,9 +58,17 @@ const FilterRegions = ({ setCountries, searchCountries, search }) => {
   });
 
   return (
-    <section className={isOpen ? "filter-region active" : "filter-region"}>
-      <p onClick={handleClick}>{activeRegion || "Filter By Region"}</p>
-      {isOpen && <ul className="region-list">{renderedRegions}</ul>}
+    <section
+      className={`filter-region position-relative ${isOpen && "active"}`}
+    >
+      <p onClick={handleClick} className="p-3 rounded-3 mb-2">
+        {activeRegion || "Filter By Region"}
+      </p>
+      {isOpen && (
+        <ul className="region-list position-absolute w-100 rounded-3">
+          {renderedRegions}
+        </ul>
+      )}
     </section>
   );
 };
