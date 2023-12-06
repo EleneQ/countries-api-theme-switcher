@@ -10,3 +10,4 @@
 - Developed better Time Management Skills
 - Expanded Proficiency in Git Version Control
 - Learned more about React Router
+- How to use the https://restcountries.com/ API
