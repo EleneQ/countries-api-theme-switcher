@@ -15,7 +15,7 @@ const CountryPage = () => {
   const getCountryByName = useCallback(async () => {
     try {
       setLoading(true);
-      const url = `https://restcountries.com/v3.1/name/${name}`;
+      const url = `https://restcountries.com/v3.1/name/${name}?fullText=true`;
       const res = await fetch(url);
       const data = await res.json();
 

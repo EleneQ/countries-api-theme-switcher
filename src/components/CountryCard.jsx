@@ -32,24 +32,6 @@ const CountryCard = ({ country }) => {
           </ListGroup>
         </Card.Body>
       </Card>
-
-      {/* <div key={name.common} className="country-card">
-        <img src={flags?.svg || flags?.png} alt={`Flag of ${name.official}`} />
-        <div className="card-info-block">
-          <h2>{name.common}</h2>
-          <ul className="card-info-list">
-            <li>
-              <span>Population:</span> {population}
-            </li>
-            <li>
-              <span>Region:</span> {region}
-            </li>
-            <li>
-              <span>Capital:</span> {capital}
-            </li>
-          </ul>
-        </div>
-      </div> */}
     </Link>
   );
 };
